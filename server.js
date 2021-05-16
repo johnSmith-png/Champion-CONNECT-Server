@@ -46,7 +46,7 @@ io.on('connection', (socket)=>{
             delete hostSocketIdPorps[socket.id]
         }
         if(playerSocketIdPorps[socket.id] !== undefined){
-            console.log(playerSocketIdPorps, 'gagagagagagagagagagagag')
+            console.log(playerSocketIdPorps)
             console.log(playerSocketIdPorps[socket.id])
             console.log(playerSocketIdPorps[socket.id].room)
 
@@ -110,7 +110,7 @@ io.on('connection', (socket)=>{
         socket.join(data.room)
         console.log(socket.rooms)
 
-        io.to(data.room).emit('joinedGameRoom', 'JOined the game')
+        io.to(data.room).emit('joinedGameRoom', 'Joined the game')
     })
 
     socket.on('adduser', (data)=>{
