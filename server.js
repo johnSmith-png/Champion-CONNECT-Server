@@ -1,12 +1,21 @@
-const { Socket } = require('socket.io')
+const express = require('express')
+const socketio = require('socket.io')
+const http = require('http')
+
+
+const app = express()
+const server = http.createServer(app)
+
+//const { Socket } = require('socket.io')
 var PORT = process.env.PORT || 3001
 
-const io = require('socket.io')(PORT, {
+const io = require('socket.io')(server, {
     cors: {
-        origin: 'https://confident-haibt-07f5c7.netlify.app/',
+        origin: 'https://champion-connect.netlify.app/', //http://localhost:3000
         method: ["GET", "POST"],
     },
 })
+server.listen(PORT, () => console.log(`server http://localhost:${PORT}`))
 
 const allConnections = []
 var rooms = []
